@@ -53,13 +53,15 @@ $sql = "SELECT * FROM `users`";
 $data = $crud->ReadData($sql);
 echo " <tr> ";
 foreach($data as $row){
+  echo '<form method="POST"><input type="hidden" name="user_id" value="'.$row['user_id'].'" />';
+
 	foreach ($row as $name=>$value){
 
 		echo " <td><input type='text'  name='$name' value='$value'></td>";
 
 	}
-  echo "<td><input type='submit' name='btn-update' value='Update'></td>";
-  echo "<td><input type='submit' name='btn-delete'  value='Delete'></td>";
+  echo "<td><input type='submit' name='update' value='Update'></td>";
+  echo "<td><input type='submit' name='delete'  value='Delete'></td>";
   echo " </tr> ";
 
 }
@@ -67,6 +69,16 @@ echo "</table> \n";
 echo " list all<br>";
 
 
+if(isset($_REQUEST['update'])){
+  $ID = $_REQUEST['user_id'];
+  $First = $_REQUEST['first_name'];
+  $Last = $_REQUEST['last_name'];
+  $City = $_REQUEST['user_city'];
+
+
+  $sql = "UPDATE users SET first_name='$First', last_name='$last', user_city='$city' WHERE id='$ID';";
+  $update = $crud->ReadData($sql);
+}
 
 
 
