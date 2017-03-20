@@ -15,10 +15,10 @@
       </tr>
       <?php
         $crud = new DbHandler("localhost","dbcrud","root","");
-        $sql = "SELECT * FROM 'users' LIMIT 0, 30 ";
+        $sql = "SELECT * FROM users ";
         $res = $crud->ReadData($sql);
 
-
+        
         foreach ($res as $row)
         {
             echo "<tr>";

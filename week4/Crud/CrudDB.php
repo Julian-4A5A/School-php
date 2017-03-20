@@ -52,7 +52,7 @@ public function ReadData($value)
     return $result;
 
   } catch (PDOException $e) {
-    return "Error";
+    return "Error" . $e->getMessage();
   }
 }
 public function UpdateData($value)
