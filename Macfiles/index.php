@@ -23,7 +23,7 @@
 
 <?php
 require_once('dbclass.php');
-$crud = new DbHandler("localhost","root","","school");
+$crud = new DbHandler("localhost","root","","dbcrud");
 
 if (isset($_REQUEST['Create'])) {
   $Fname = $_REQUEST['Firstname'];
@@ -53,7 +53,7 @@ $sql = "SELECT * FROM `users`";
 $data = $crud->ReadData($sql);
 echo " <tr> ";
 foreach($data as $row){
-  echo '<form method="POST"><input type="hidden" name="user_id" value="'.$row['user_id'].'" />';
+
 
 	foreach ($row as $name=>$value){
 
@@ -76,7 +76,7 @@ if(isset($_REQUEST['update'])){
   $City = $_REQUEST['user_city'];
 
 
-  $sql = "UPDATE users SET first_name='$First', last_name='$last', user_city='$city' WHERE id='$ID';";
+  $sql = "UPDATE users SET 'first_name'='$First', 'last_name'='$last', 'user_city'='$city' WHERE id='$ID';";
   $update = $crud->ReadData($sql);
 }
 
